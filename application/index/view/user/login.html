@@ -1,0 +1,38 @@
+{extend name="public/base"}
+{block name="main"}
+		<div class="col-md-8 col-lg-8 col-sm-8">
+			<form action="{:url('user/doLogin')}" method="post">
+			<div class="form-group">
+				<lable class="control-lable">用户名</lable>
+				<input type="text" name="username" class="form-control" value="" />
+				<span class="help-block">用户名长度是2~100位</span>
+			</div>
+			<div class="form-group">
+				<lable class="control-lable">密码</lable>
+				<input type="password" name="password" class="form-control" value="" />
+				<span class="help-block">密码长度是2~100位</span>
+			</div>
+			<div class="form-group">
+				<lable class="control-lable">验证码</lable>
+				<input type="text" name="captcha" class="form-control" placeholder="请输入下面的验证码" />
+				<span class="help-block"><img src="{:captcha_src()}" id="img" alt="captcha" onclick="shuaXin()"/></span>
+			</div>
+			<div class="form-group">
+				<div class="checkbox">
+					<lable>
+						<input type="checkbox" />七天免密码登陆
+					</lable>
+				</div>
+			</div>
+			<div class="form-group">
+				<input type="submit" name="" id="" value="登陆" />
+				<input type="reset" name="" id="" value="重置" />
+			</div>
+		</form>
+		</div>
+{/block}
+{block name="right"}
+<div class="col-md-4 col-lg-4 col-sm-4">
+	
+</div>
+{/block}

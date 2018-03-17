@@ -1,0 +1,90 @@
+{extend name="public/base"}
+{block name="main"}
+<div class="col-md-8">
+    <div class="table-responsive">
+    	<h2>个人详情</h2>
+    	<table class="table table-bordered table-hover table-striped "   >
+    	<thead>
+    		<tr>
+    		<td>编号</td>
+    		<td>名字</td>
+    		<td>电话</td>
+    		<td>邮箱</td>
+    		<td>创建时间</td>
+    		<td>余额</td>
+    	</tr>
+    	</thead>
+   
+    		<tr>
+    		<td>{$user.id}</td>
+    		<td>{$user.username}</td>
+    		<td>{$user.mobile}</td>
+    		<td>{$user.email}</td>
+    		<td>{$user.created}</td>
+    		<td>{$user.balance}</td>
+    		</tr>
+    	</table>
+     </div>
+         <div class="table-responsive">
+    	<h2>个人博客详情</h2>
+    	<table class="table table-bordered table-hover table-striped "   >
+    	<thead>
+    		<tr>
+    		
+    		<td>标题</td>
+    		<td>创建时间</td>
+    		<td>操作菜单</td>
+    	</tr>
+    	</thead>
+   {volist name="blog" id="vo"}	
+    		<tr>
+    		<td>{$vo.title}</td>
+    		<td>{$vo.created}</td>
+    		<td>
+    			<a class="btn btn-success btn-xs" href="{:url('blog/edit',['id'=>$vo.id])}">查看</a>
+    			<a class="btn btn-warning btn-xs" href="{:url('blog/edit',['id'=>$vo.id])}">编辑</a>
+    			<a class="btn btn-danger btn-xs" href="{:url('blog/delete',['id'=>$vo.id])}">删除</a>
+    		</td>
+    	</tr>
+    {/volist}	
+    	</table>
+    	{$blog->render()}
+     </div>
+
+</div> 
+{/block}
+{block name="right"}
+	<div class="col-md-4">
+		
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">最热文章</h3>
+			</div>
+			<div class="panel-body">
+				<ul class="list-group">
+				{volist name="hotest" id="vo"}
+				<li class="list-group-item">
+					<a href="#">{$vo.title|mb_substr=0,12}</a>
+					<span class="badge">{$vo.view}</span>
+				</li>
+				{/volist}
+				</ul>
+			</div>
+		</div>
+		
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h3 class="panel-title">最新文章</h3>
+			</div>
+			<div class="panel-body">
+				<ul class="list-group">
+				{volist name="newest" id="new"}
+				<li class="list-group-item">
+					<a href="#">{$new.title|mb_substr=0,15}</a>
+				</li>
+				{/volist}
+				</ul>
+			</div>
+		</div>
+	</div>
+{/block}

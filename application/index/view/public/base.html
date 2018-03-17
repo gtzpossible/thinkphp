@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TP5</title>
+    <link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.css" />
+  </head>
+
+  <body>
+    <div class="container">
+    <!-- 引入页头文件 -->
+    {include file="public/navbar"}
+    
+	{block name="left"}{/block}
+	{block name="main"}主内容{/block}
+	{block name="right"}{/block}
+	
+		<!-- 引入页脚文件 -->
+		{include file="public/footer"}
+    </div>
+    		<script type="text/javascript">
+
+			var mg=document.getElementById("img");
+//			console.log(mg);
+
+			function shuaXin(){
+				mg.src=mg.src+"?Math.random()";
+			}
+		</script>
+  <script src="__STATIC__/jquery/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__STATIC__/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>
+

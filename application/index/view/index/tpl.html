@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>TPL模板</title>
+	</head>
+	<body>
+		<h1>TPL模板</h1>
+		{$hi}<hr>
+		{$hi|strtoupper}<hr>
+		<!-- 字符串截取 -->
+		{$hi|substr=0,5}<hr>
+		<!-- 管道的用法 -->
+		{$hi|strtoupper|substr=0,5}
+		<hr>
+		
+		{literal}
+		{$hi}
+		{/literal}
+		<hr>
+		
+		<!-- 访问关联数组 -->
+		{$blog['title']} ( {$blog.view} )
+		<hr>
+		
+		<!-- 访问对象 -->
+		{$obj->title|mb_substr=0,5} ( {$obj:view} )
+		<hr>
+		
+		创建时间：
+		{$obj:created|date="Y-m-d","###"}
+		<hr>
+			
+		{$Think.const.CORE_PATH}<br/>
+		{$Think.CORE_PATH}<br />
+		<!-- 获取配置中的默认控制器名 -->
+		{$Think.config.default_controller}
+		{$Think.config.paginate.list_rows}
+		<hr>
+		{if condition="$Think.config.app_debug eq true"}
+			<h3>已开启调试模式</h3>
+		{else /}
+			<h3>未开启调试模式</h3>
+		{/if}
+		<hr>
+		
+		<ul>
+		{foreach $blogs as $b}
+		<li>{$b['title']}</li>
+		{/foreach}
+		<hr>
+		{foreach name="blogs" item="blog"}
+		<li>{$blog.title}</li>
+		{/foreach}
+		</ul>
+		<hr>
+		{for start="1" end="10" step="2"}
+			{$i}
+		{/for}
+		<hr>
+		
+		<ul>
+		{volist name="blogs" id="vo"}
+		<li>( $vo.view ) {$vo.title}</li>
+		{/volist}
+		</ul>
+		
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+	</body>
+</html>
